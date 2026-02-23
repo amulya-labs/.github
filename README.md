@@ -50,5 +50,5 @@ This helps projects stay consistent without copy/pasting boilerplate into every 
 Start here:
 - https://github.com/amulya-labs/gha-opencache
 - https://github.com/amulya-labs/gha-runnerd
-- https://github.com/amulya-labs/claude-agents
+- https://github.com/amulya-labs/claude-code-config
 - https://github.com/amulya-labs/bazel-tutorial
