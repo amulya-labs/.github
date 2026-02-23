@@ -8,32 +8,35 @@
 
 </div>
 
+
+
 > From **Nepali**🇳🇵 / **Sanskrit**: **a-** (negation) + **mūlya** (value/price) ⟶ not something that can be valued or priced.
-> Pronouncement: **uh-MOOL-yuh** *(IPA: /əˈmuːljə/)* — **“uh” + “mool” + “yuh.”**
+> 
+> Pronounced as **uh-MOOL-yuh** *(IPA: /əˈmuːljə/)* — **“uh” + “mool” + “yuh.”**
 
 ---
 
 ## CI & Dev Infra
 
 - **OpenCache Actions** — Fast, configurable drop-in replacement for `actions/cache` with pluggable backends (local disk, S3-compatible, GCS).  
-  https://github.com/amulya-labs/gha-opencache
+  - https://github.com/amulya-labs/gha-opencache
 
 - **gha-runnerd** — Deploy and manage GitHub Actions self-hosted runners as a daemon on Linux.  
-  https://github.com/amulya-labs/gha-runnerd
+  - https://github.com/amulya-labs/gha-runnerd
 
 ---
 
 ## AI Tooling
 
-- **claude-agents** — Reusable Claude Code agents for planning, building, reviewing, and ops workflows.  
-  https://github.com/amulya-labs/claude-agents
+- **claude-code-config** — Reusable Claude Code agents for planning, building, reviewing, and ops workflows.  
+  - https://github.com/amulya-labs/claude-code-config
 
 ---
 
 ## Tutorials
 
 - **Bazel multi-language tutorial** — Hands-on polyglot Bazel setup (Go/Python/TypeScript) with a real demo dashboard.  
-  https://github.com/amulya-labs/bazel-tutorial
+  - https://github.com/amulya-labs/bazel-tutorial
 
 ---
 
