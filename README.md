@@ -45,6 +45,35 @@ This helps projects stay consistent without copy/pasting boilerplate into every 
 
 ---
 
+## Security Baseline
+
+This repository provides **reusable security workflows** and community health defaults for all Amulya Labs projects.
+
+### Reusable Workflows
+
+Each workflow is independent and callable from any repository in the org:
+
+| Workflow | Tool | Purpose |
+|----------|------|---------|
+| `reusable-codeql.yml` | CodeQL v4 | Static analysis for vulnerable code patterns |
+| `reusable-dependency-review.yml` | Dependency Review v4 | Block risky dependency updates |
+| `reusable-osv.yml` | OSV-Scanner v2 | Detect known vulnerabilities in dependencies |
+| `reusable-gitleaks.yml` | Gitleaks v2 | Secret and credential detection |
+| `reusable-scorecard.yml` | OpenSSF Scorecard v2 | Security best practices score |
+
+### Workflow Template
+
+Use the **Security Baseline** workflow template (`security-baseline.yml`) to adopt all five tools at once:
+
+1. Go to your repo → **Actions** tab
+2. Click **"New workflow"** → **"Security Baseline"**
+3. Customize language settings in `reusable-codeql.yml` input if needed
+4. Commit and push
+
+See [docs/security-badges.md](docs/security-badges.md) for badge snippets to add to your README.
+
+---
+
 ## Looking for actual projects?
 
 Start here:

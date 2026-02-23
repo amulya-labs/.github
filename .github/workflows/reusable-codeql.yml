@@ -1,0 +1,56 @@
+name: Reusable CodeQL Analysis
+
+on:
+  workflow_call:
+    inputs:
+      languages:
+        description: "JSON array of languages to analyze (required). Example: [\"python\", \"javascript\"]"
+        required: true
+        type: string
+      build-mode:
+        description: "Build mode: 'autobuild' (default) or 'manual'. Use 'manual' for complex builds."
+        required: false
+        type: string
+        default: autobuild
+      query-suite:
+        description: "Query suite: 'security-and-quality' (default) or 'security-extended'"
+        required: false
+        type: string
+        default: security-and-quality
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ${{ fromJson(inputs.languages) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          queries: ${{ inputs.query-suite }}
+          build-mode: ${{ inputs.build-mode }}
+
+      - name: Autobuild
+        if: inputs.build-mode == 'autobuild'
+        uses: github/codeql-action/autobuild@v4
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: /language:${{ matrix.language }}
+
+      - name: Upload to code scanning
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: results/${{ matrix.language }}.sarif
+          wait-for-processing: true

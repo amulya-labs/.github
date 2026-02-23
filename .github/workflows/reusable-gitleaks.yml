@@ -1,0 +1,43 @@
+name: Reusable Gitleaks Secret Scanning
+
+on:
+  workflow_call:
+    inputs:
+      enable-sarif-upload:
+        description: "Upload SARIF results for code scanning (true/false)"
+        required: false
+        type: boolean
+        default: true
+    secrets:
+      gitleaks-license:
+        description: "Optional Gitleaks Pro license key"
+        required: false
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          license: ${{ secrets.gitleaks-license || '' }}
+          source: ${{ github.server_url }}/${{ github.repository }}
+          verbose: true
+          redirect-stdout: true
+        env:
+          GITLEAKS_ENABLE_COMMENTS: true
+
+      - name: Upload SARIF report
+        uses: github/codeql-action/upload-sarif@v4
+        if: ${{ inputs.enable-sarif-upload && always() }}
+        with:
+          sarif_file: sarif.json
