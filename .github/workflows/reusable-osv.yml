@@ -40,6 +40,12 @@ jobs:
             --lockfile=Gemfile.lock
             --lockfile=poetry.lock
             --lockfile=requirements.txt
+            --lockfile=go.mod
+            --lockfile=go.sum
+            --lockfile=Cargo.lock
+            --lockfile=pom.xml
+            --lockfile=build.gradle
+            --lockfile=Pipfile
             ${{ inputs.scan-args }}
           fail-on-vuln: ${{ inputs.fail-on-vuln }}
           upload-sarif: ${{ inputs.upload-sarif }}

@@ -33,6 +33,7 @@ jobs:
           source: ${{ github.server_url }}/${{ github.repository }}
           verbose: true
           redirect-stdout: true
+          sarif: results.sarif
         env:
           GITLEAKS_ENABLE_COMMENTS: true
 

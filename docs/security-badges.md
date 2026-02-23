@@ -39,3 +39,28 @@ Both badges together in your README:
 
 - **Security Baseline**: All five security tools (CodeQL, Dependency Review, OSV-Scanner, Gitleaks, Scorecard) ran successfully
 - **OpenSSF Scorecard**: Your repository meets OpenSSF security best practices (0-10 scale)
+
+---
+
+## Important Notes
+
+### Scorecard Badge Publishing
+
+After your first successful Scorecard run, the badge may take **24-48 hours** to appear. The badge reflects your latest score once published.
+
+### Gitleaks Pro License (Optional)
+
+If your organization has a Gitleaks Pro license, set it as a secret:
+
+1. **Org-level**: Go to Org Settings → Secrets → New repository secret
+   - Name: `GITLEAKS_LICENSE`
+   - Value: Your Gitleaks Pro license key
+
+2. **Repo-level**: Go to Repo Settings → Secrets → New repository secret
+   - Same name and value
+
+The workflow will automatically use the license if available.
+
+### Weekly Scans
+
+The Security Baseline template runs on a weekly schedule (Sunday at midnight UTC) in addition to push and pull request events. This ensures continuous monitoring even without code changes.
