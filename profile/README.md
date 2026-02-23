@@ -4,7 +4,7 @@
 
 ## **अमूल्य (Amulya)** — *“priceless, beyond value.”*  
 
-**Priceless Software.**: High-leverage FLOSS tools and tutorials that make engineering faster, calmer, and more predictable.
+**Priceless Software:** High-leverage FLOSS tools and tutorials that make engineering faster, calmer, and more predictable.
 
 </div>
 
