@@ -10,7 +10,7 @@
 
 
 
-> From **Nepali**🇳🇵 / **Sanskrit**: **a-** (negation) + **mūlya** (value/price) ⟶ not something that can be valued or priced.
+> From **Nepali**🇳🇵 / **Sanskrit**: **a-** (अ: negation) + **mūlya** (मूल्य: value/price) ⟶ not something that can be valued or priced.
 > 
 > Pronounced as **uh-MOOL-yuh** *(IPA: /əˈmuːljə/)* — **“uh” + “mool” + “yuh.”**
 
