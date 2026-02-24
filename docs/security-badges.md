@@ -64,3 +64,57 @@ The workflow will automatically use the license if available.
 ### Weekly Scans
 
 The Security Baseline template runs on a weekly schedule (Sunday at midnight UTC) in addition to push and pull request events. This ensures continuous monitoring even without code changes.
+
+---
+
+## Customizing the Security Baseline
+
+### CodeQL Query Suites
+
+When customizing CodeQL for your repository, choose the appropriate query suite:
+
+- **`security-and-quality` (default)**: Recommended for most projects. Includes security checks plus code quality rules. Faster analysis.
+- **`security-extended`**: For sensitive projects (authentication, cryptography, data handling). More comprehensive but slower.
+
+Edit your workflow to change:
+```yaml
+codeql:
+  uses: amulya-labs/.github/.github/workflows/reusable-codeql.yml@main
+  with:
+    languages: '["python"]'
+    query-suite: security-extended
+```
+
+### Languages and Build Mode
+
+For compiled languages (C, C++, Go, Java), adjust the `build-mode`:
+
+- **`autobuild` (default)**: Automatic detection and building. Works for most projects.
+- **`manual`**: For complex builds or monorepos. You'll need to add custom build steps.
+
+### Dependency Severity Threshold
+
+Adjust how strictly dependencies are reviewed:
+
+```yaml
+dependency-review:
+  uses: amulya-labs/.github/.github/workflows/reusable-dependency-review.yml@main
+  with:
+    fail-on-severity: critical  # Options: critical, high, moderate, low
+```
+
+### Private Repository Requirement for Scorecard
+
+The OpenSSF Scorecard **badge publishing** requires:
+- Public repository (scores published to securityscorecards.dev)
+- `publish-results: true` in the workflow
+- Valid OIDC token (auto-provided by GitHub)
+
+**For private repositories:** Set `publish-results: false` in your workflow. Your repository will still run all security checks; the public badge just won't appear.
+
+```yaml
+scorecard:
+  uses: amulya-labs/.github/.github/workflows/reusable-scorecard.yml@main
+  with:
+    publish-results: false  # Set to false for private repos
+```

@@ -10,28 +10,28 @@ on:
 
 jobs:
   codeql:
-    uses: ./.github/workflows/reusable-codeql.yml
+    uses: amulya-labs/.github/.github/workflows/reusable-codeql.yml@main
     with:
       languages: '["python", "javascript"]'
 
   dependency-review:
-    uses: ./.github/workflows/reusable-dependency-review.yml
+    uses: amulya-labs/.github/.github/workflows/reusable-dependency-review.yml@main
     with:
       fail-on-severity: high
       comment-summary-in-pr: true
 
   osv-scanner:
-    uses: ./.github/workflows/reusable-osv.yml
+    uses: amulya-labs/.github/.github/workflows/reusable-osv.yml@main
     with:
       fail-on-vuln: true
       upload-sarif: true
 
   gitleaks:
-    uses: ./.github/workflows/reusable-gitleaks.yml
+    uses: amulya-labs/.github/.github/workflows/reusable-gitleaks.yml@main
     with:
       enable-sarif-upload: true
 
   scorecard:
-    uses: ./.github/workflows/reusable-scorecard.yml
+    uses: amulya-labs/.github/.github/workflows/reusable-scorecard.yml@main
     with:
       publish-results: true

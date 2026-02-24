@@ -30,12 +30,9 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         with:
           license: ${{ secrets.gitleaks-license || '' }}
-          source: ${{ github.server_url }}/${{ github.repository }}
           verbose: true
-          redirect-stdout: true
           sarif: results.sarif
-        env:
-          GITLEAKS_ENABLE_COMMENTS: true
+          comment: ${{ secrets.gitleaks-license != '' }}
 
       - name: Upload SARIF report
         uses: github/codeql-action/upload-sarif@v4

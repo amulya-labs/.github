@@ -67,7 +67,7 @@ Use the **Security Baseline** workflow template (`security-baseline.yml`) to ado
 
 1. Go to your repo → **Actions** tab
 2. Click **"New workflow"** → **"Security Baseline"**
-3. Customize language settings in `reusable-codeql.yml` input if needed
+3. Customize as needed (e.g., CodeQL languages, dependency severity threshold)
 4. Commit and push
 
 See [docs/security-badges.md](docs/security-badges.md) for badge snippets to add to your README.

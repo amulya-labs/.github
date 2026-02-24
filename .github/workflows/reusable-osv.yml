@@ -34,18 +34,7 @@ jobs:
         uses: google/osv-scanner-action@v2
         with:
           scan-args: |-
-            --lockfile=package-lock.json
-            --lockfile=yarn.lock
-            --lockfile=pnpm-lock.yaml
-            --lockfile=Gemfile.lock
-            --lockfile=poetry.lock
-            --lockfile=requirements.txt
-            --lockfile=go.mod
-            --lockfile=go.sum
-            --lockfile=Cargo.lock
-            --lockfile=pom.xml
-            --lockfile=build.gradle
-            --lockfile=Pipfile
+            --recursive
             ${{ inputs.scan-args }}
           fail-on-vuln: ${{ inputs.fail-on-vuln }}
           upload-sarif: ${{ inputs.upload-sarif }}
