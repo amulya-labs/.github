@@ -1,0 +1,6 @@
+{
+  "name": "Security Baseline",
+  "description": "Comprehensive security scanning: CodeQL, dependency review, OSV-Scanner, secret detection, and OpenSSF Scorecard.",
+  "iconName": "shield-lock",
+  "categories": ["security"]
+}

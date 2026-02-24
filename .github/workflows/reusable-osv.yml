@@ -1,0 +1,40 @@
+name: Reusable OSV-Scanner
+
+on:
+  workflow_call:
+    inputs:
+      scan-args:
+        description: "Additional osv-scanner arguments (e.g., '--recursive')"
+        required: false
+        type: string
+        default: ""
+      fail-on-vuln:
+        description: "Exit with error if vulnerabilities found (true/false)"
+        required: false
+        type: boolean
+        default: true
+      upload-sarif:
+        description: "Upload SARIF results for code scanning (true/false)"
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  osv-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run OSV-Scanner
+        uses: google/osv-scanner-action@v2
+        with:
+          scan-args: |-
+            --recursive
+            ${{ inputs.scan-args }}
+          fail-on-vuln: ${{ inputs.fail-on-vuln }}
+          upload-sarif: ${{ inputs.upload-sarif }}

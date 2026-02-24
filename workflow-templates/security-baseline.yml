@@ -1,0 +1,37 @@
+name: Security Baseline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+
+jobs:
+  codeql:
+    uses: amulya-labs/.github/.github/workflows/reusable-codeql.yml@main
+    with:
+      languages: '["python", "javascript"]'
+
+  dependency-review:
+    uses: amulya-labs/.github/.github/workflows/reusable-dependency-review.yml@main
+    with:
+      fail-on-severity: high
+      comment-summary-in-pr: true
+
+  osv-scanner:
+    uses: amulya-labs/.github/.github/workflows/reusable-osv.yml@main
+    with:
+      fail-on-vuln: true
+      upload-sarif: true
+
+  gitleaks:
+    uses: amulya-labs/.github/.github/workflows/reusable-gitleaks.yml@main
+    with:
+      enable-sarif-upload: true
+
+  scorecard:
+    uses: amulya-labs/.github/.github/workflows/reusable-scorecard.yml@main
+    with:
+      publish-results: true
